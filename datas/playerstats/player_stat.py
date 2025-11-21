@@ -20,7 +20,7 @@ if comment_content:
     alphabet_html = comment_content.group(1)
     html = HTMLParser(alphabet_html)
 
-    links = html.css("ul.alphabet li a")
+    links = html.css("ul.alphabet li a") 
     
     for a in links:
         
@@ -31,7 +31,7 @@ print("ELSO LEPES ✅️✅️✅️✅️")
 
 
 
-
+main_list = []
 
 all_players_name = []
 
@@ -55,16 +55,13 @@ class masodik_lepes:
             for a in self.__links:
                 all_players_name.append((a.text(), a.attributes.get("href")))
             
-
-
-
-        # na most jon a le toltes fazis..  => panas de ezt majd holnap mert most meghalok ...
-        
-
-
-
             for name, href in all_players_name:
-                print(f"{name} | {"https://www.basketball-reference.com" + href}")
+                #print(f"{name} | {"https://www.basketball-reference.com" + href}")
+                main_list.append("https://www.basketball-reference.com" + href)
+                time.sleep(random.uniform(2, 6))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
+    def vissza_terites(self):
+        return main_list
 
-            time.sleep(random.uniform(1, 3))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
-
+masodik_lepes()
+masodik_lepes.vissza_terites()
+print(main_list)
