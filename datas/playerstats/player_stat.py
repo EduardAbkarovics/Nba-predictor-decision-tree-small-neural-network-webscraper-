@@ -56,7 +56,7 @@ class masodik_lepes:
 
 
             # ne legyen duplikacio
-            unique_players = list(dict.fromkeys(all_players_name))
+            all_players_name = list(dict.fromkeys(all_players_name))
 
             for name, href in all_players_name:
                 full_url = "https://www.basketball-reference.com" + href
