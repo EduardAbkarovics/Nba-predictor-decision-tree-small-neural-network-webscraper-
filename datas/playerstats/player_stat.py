@@ -36,7 +36,9 @@ all_players_name = []
 
 #innen indul a masodik lepes a webscraping 
 class masodik_lepes:
+    
     def __init__(self):
+        global all_players_name, main_list 
         self.__header = headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"}
         for i, elem in enumerate(player_list):
             
@@ -60,9 +62,10 @@ class masodik_lepes:
 
             for name, href in all_players_name:
                 full_url = "https://www.basketball-reference.com" + href
-                main_list.append((name, full_url))
-                print(f"{name} | {full_url}")
-                time.sleep(random.uniform(2, 3))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
+                if (name, full_url) not in main_list:   # így nem lesz duplikáció
+                    main_list.append((name, full_url))
+                    print(f"{name} | {full_url}")
+                    time.sleep(random.uniform(2, 3))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
     def vissza_terites(self):
         return main_list
 
