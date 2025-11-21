@@ -54,12 +54,17 @@ class masodik_lepes:
             self.__links = html.css("tr th a")
             for a in self.__links:
                 all_players_name.append((a.text(), a.attributes.get("href")))
+            
+
+
+
+        # na most jon a le toltes fazis..  => panas de ezt majd holnap mert most meghalok ...
+        
 
 
 
             for name, href in all_players_name:
-                print(f"{name} | {href}")
+                print(f"{name} | {"https://www.basketball-reference.com" + href}")
 
             time.sleep(random.uniform(1, 3))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
 
-masodik_lepes()

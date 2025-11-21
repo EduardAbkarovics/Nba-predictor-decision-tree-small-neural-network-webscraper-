@@ -1,1 +1,76 @@
-1. i need to make a websraper to scrape data of players , teams .....
+1. i need to make a websraper to scrape data of players , teams ....
+
+
+
+
+
+
+
+
+Basketball-Reference
+
+Web: https://www.basketball-reference.com
+
+Mit tartalmaz:
+
+Játékos statisztikák: pontok, lepattanók, asszisztok, blokkok, labdaszerzések, dobási százalékok, poszt, életkor
+
+Csapat statisztikák: győzelmek/vereségek, pontkülönbség, labdabirtoklás, pace, turnover
+
+Season / meccs / playoff bontás
+
+Elérés:
+
+Kézzel: CSV export a weboldal táblázataiból
+
+Automatikusan: Python könyvtárak, pl. basketball-reference-scraper
+
+2️⃣ NBA Stats (Official)
+
+Web: https://stats.nba.com
+
+Mit tartalmaz:
+
+Advanced statok: TS%, eFG%, PER, offensive/defensive rating, plus/minus
+
+Lineup statisztikák
+
+Játékos és csapat teljesítmény mérkőzésenként
+
+Elérés:
+
+API-n keresztül (JSON formátum) → Pythonban könnyen lekérhető a requests vagy nba_api csomaggal
+
+Python nba_api dokumentáció
+
+3️⃣ RealGM
+
+Web: https://basketball.realgm.com
+
+Mit tartalmaz:
+
+Játékos profilok: korábbi klub, sérülések, tapasztalat, draft adatok
+
+Csapat és játékos statisztikák szezononként
+
+Elérés:
+
+Kézi letöltés CSV-be
+
+Scraperrel automatizálható
+
+4️⃣ ESPN / CBS Sports / NBA.com Box Scores
+
+Mit tartalmaz:
+
+Meccs specifikus statok: pontok, lepattanók, asszisztok, személyes hibák, dobási százalék
+
+Egyszerű HTML parsing vagy API-n keresztül lekérhető
+
+5️⃣ Kényelmes Python eszközök
+
+nba_api → Hivatalos NBA statok lekérése JSON-ban
+
+basketball-reference-scraper → könnyen exportálható CSV
+
+pandas → adatok feldolgozásához és prediktor készítéséhez
