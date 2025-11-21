@@ -3,7 +3,7 @@ from selectolax.parser import HTMLParser
 import re
 import time
 import random 
-
+import os
 
 url = "https://www.basketball-reference.com/players/"
 headers = {
@@ -26,7 +26,6 @@ if comment_content:
         
         href = a.attributes.get("href")
         player_list.append("https://www.basketball-reference.com" + href)
-        print(player_list)
 print("ELSO LEPES ✅️✅️✅️✅️")
 
 
@@ -56,12 +55,35 @@ class masodik_lepes:
                 all_players_name.append((a.text(), a.attributes.get("href")))
             
             for name, href in all_players_name:
-                #print(f"{name} | {"https://www.basketball-reference.com" + href}")
-                main_list.append("https://www.basketball-reference.com" + href)
-                time.sleep(random.uniform(2, 6))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
+                print(f"{name} | {"https://www.basketball-reference.com" + href}")
+                main_list.append((name, "https://www.basketball-reference.com" + href))
+                time.sleep(random.uniform(2, 3))    # meg adja az url le scrapeli es majd csak utana megy tovabb.  1/ 3 mp kozot hogy ne latszodjak botnak.
     def vissza_terites(self):
         return main_list
 
 masodik_lepes()
 masodik_lepes.vissza_terites()
-print(main_list)
+
+player_table = []
+class harmadik_lepes:
+    def __init__(self):
+        self.__header = headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"}
+        for name, url in main_list:  
+            print(f"Dolgozok: {name}")
+
+            #  Mappa letrehozasa játékos neve alapján
+            os.makedirs(f"data/playerstat/{name}", exist_ok=True)
+
+            # Lekérés
+            response = httpx.get(url, headers=self.__header)
+            html = HTMLParser(response.text)
+
+            table = html.css_first("table#per_game_stats")
+            if table:
+                player_table.append(table.text())
+
+    def vissza_terites(self):
+        return player_table
+
+harmadik_lepes()
+harmadik_lepes.vissza_terites()
