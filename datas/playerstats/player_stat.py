@@ -53,7 +53,11 @@ class masodik_lepes:
             self.__links = html.css("tr th a")
             for a in self.__links:
                 all_players_name.append((a.text(), a.attributes.get("href")))
-            
+
+
+            # ne legyen duplikacio
+            unique_players = list(dict.fromkeys(all_players_name))
+
             for name, href in all_players_name:
                 full_url = "https://www.basketball-reference.com" + href
                 main_list.append((name, full_url))
